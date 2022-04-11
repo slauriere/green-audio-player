@@ -21,6 +21,7 @@ class GreenAudioPlayer {
         this.speaker = this.audioPlayer.querySelector('.volume__speaker');
         this.download = this.audioPlayer.querySelector('.download');
         this.downloadLink = this.audioPlayer.querySelector('.download__link');
+        this.close = this.audioPlayer.querySelector('.close');
         this.span = this.audioPlayer.querySelectorAll('.message__offscreen');
         this.svg = this.audioPlayer.getElementsByTagName('svg');
         this.img = this.audioPlayer.getElementsByTagName('img');
@@ -74,6 +75,10 @@ class GreenAudioPlayer {
 
         if (opts.showDownloadButton || false) {
             this.showDownload();
+        }
+
+        if (opts.showCloseButton || false) {
+            this.showClose();
         }
 
         this.initEvents();
@@ -156,6 +161,27 @@ class GreenAudioPlayer {
                         <path d="m25.462 19.105v6.848h-20.947v-6.848h-4.026v8.861c0 1.111 0.9 2.012 2.016 2.012h24.967c1.115 0 2.016-0.9 2.016-2.012v-8.861h-4.026z"/>
                         <path d="m14.62 18.426l-5.764-6.965s-0.877-0.828 0.074-0.828 3.248 0 3.248 0 0-0.557 0-1.416v-8.723s-0.129-0.494 0.615-0.494h4.572c0.536 0 0.524 0.416 0.524 0.416v8.742 1.266s1.842 0 2.998 0c1.154 0 0.285 0.867 0.285 0.867s-4.904 6.51-5.588 7.193c-0.492 0.495-0.964-0.058-0.964-0.058z"/>
                     </svg>
+                </a>
+            </div>
+
+            <div class="close">
+                <a class="close__link" href="" download="" aria-label="Close" role="button">
+                  <svg
+                     width="24"
+                     height="24"
+                     viewBox="0 0 30 30"
+                     overflow="visible"
+                     stroke="#566574"
+                     stroke-width="4"
+                     stroke-linecap="round"
+                     version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                     xmlns:svg="http://www.w3.org/2000/svg">
+                    <path
+                       d="M 4.1888014,4.1786777 25.884951,25.874827" />
+                    <path
+                       d="M 25.884951,4.1786777 4.1888014,25.874827"/>
+                  </svg>
                 </a>
             </div>
         `;
@@ -547,6 +573,10 @@ class GreenAudioPlayer {
 
         this.downloadLink.setAttribute('href', src);
         this.downloadLink.setAttribute('download', name);
+    }
+
+    showClose() {
+        this.close.style.display = 'block';
     }
 
     directionAware() {
